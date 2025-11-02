@@ -1,26 +1,47 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Analyse boursière 2025 - FinTalk</title>
-<style>
-body{font-family:Arial,sans-serif;background:#f8fafc;color:#1e293b;margin:0;padding:2rem;text-align:center;}
-.container{max-width:600px;margin:auto;background:#fff;border-radius:12px;padding:2rem;box-shadow:0 4px 16px rgba(0,0,0,.1);}
-.btn{display:inline-block;background:#25D366;color:white;padding:14px 22px;border-radius:8px;text-decoration:none;font-weight:600;}
-.btn:hover{background:#1EBE57;}
-</style>
-<script>
-setTimeout(()=>{
-  window.location.href="https://wa.me/33688054788?text=Bonjour%2C%20je%20souhaite%20rejoindre%20le%20groupe%20et%20obtenir%20les%20meilleures%20actions%20de%202025";
-}, 1800);
-</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Redirection vers WhatsApp…</title>
+  <style>
+    body{font-family:Arial,system-ui; background:#f8fafc; color:#1e293b; margin:0; padding:2rem; line-height:1.6;}
+    .wrap{max-width:640px;margin:auto;background:#fff;border-radius:12px;padding:24px;box-shadow:0 6px 18px rgba(0,0,0,.08); text-align:center}
+    .btn{display:inline-block;background:#25D366;color:#fff;text-decoration:none;padding:12px 18px;border-radius:8px;font-weight:700}
+    .btn:hover{filter:brightness(1.05)}
+    .muted{color:#64748b}
+  </style>
 </head>
 <body>
-<div class="container">
-  <h1>Chargement de la page sécurisée...</h1>
-  <p>Merci de patienter un instant. Vous serez redirigé vers notre conseiller WhatsApp.</p>
-  <p><a class="btn" href="https://wa.me/33688054788" target="_blank">Aller à WhatsApp maintenant</a></p>
-</div>
+  <div class="wrap">
+    <h1>Ouverture de WhatsApp…</h1>
+    <p class="muted">Merci de patienter une seconde. Vous allez être redirigé automatiquement.</p>
+    <p><a id="btn" class="btn" href="https://wa.me/33688054788?text=Bonjour%2C%20je%20souhaite%20rejoindre%20le%20groupe%20et%20obtenir%20les%20meilleures%20actions%20de%202025" target="_blank" rel="noopener">Aller à WhatsApp maintenant</a></p>
+    <p class="muted" id="state">Initialisation…</p>
+  </div>
+
+  <!-- 只用延迟跳转；无 meta-refresh；无其它立即跳转 -->
+  <script defer>
+    (function () {
+      // 支持调试：加 ?debug=1 将不会自动跳转
+      var qs = new URLSearchParams(location.search);
+      if (qs.get('debug') === '1') {
+        document.getElementById('state').textContent = 'Mode debug: pas de redirection automatique.';
+        return;
+      }
+      var url = document.getElementById('btn').href;
+      document.getElementById('state').textContent = 'Redirection dans 1,8 seconde…';
+      setTimeout(function () {
+        // 使用 assign 保留历史记录；如需替换历史用 location.replace(url)
+        window.location.href = url;
+      }, 1800);
+    })();
+  </script>
+
+  <noscript>
+    <div class="wrap" style="margin-top:12px;">
+      <p>JavaScript est désactivé. Cliquez le bouton ci-dessus pour ouvrir WhatsApp.</p>
+    </div>
+  </noscript>
 </body>
 </html>
